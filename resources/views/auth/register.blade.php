@@ -1,9 +1,10 @@
-<x-guest-layout>
+<x-app-layout>
     <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
+        <x-slot name="header">
+            <div class="flex flex-col items-center justify-center">
+                <h1 class="text-4xl mt-4 mb-2">Sign up</h1>
+                <a href="{{ route('login') }}" class="text-green-500 hover:underline text-md">Have an account?</a>
+            </div>
         </x-slot>
 
         <!-- Validation Errors -->
@@ -56,4 +57,4 @@
             </div>
         </form>
     </x-auth-card>
-</x-guest-layout>
+</x-app-layout>
