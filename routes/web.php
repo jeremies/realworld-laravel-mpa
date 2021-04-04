@@ -14,12 +14,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home');
+    if (auth()->user()) {
+        return redirect(route('feed'));
+    } else {
+        return redirect(route('global'));
+    }
 })->name('home');
 
-//
-//Route::get('/dashboard', function () {
-//    return view('dashboard');
-//})->middleware(['auth'])->name('dashboard');
+Route::get('/global', [\App\Http\Controllers\ArticleController::class, 'index'])->name('global');
 
-require __DIR__.'/auth.php';
+Route::middleware('auth')->group(function () {
+    Route::get('/feed', function () {
+        return view('home');
+    })->name('feed');
+});
+
+require __DIR__ . '/auth.php';

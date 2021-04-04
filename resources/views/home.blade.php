@@ -10,74 +10,13 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto px-20 flex">
             <div class="w-3/4">
-                <div class="py-8 border-b border-b-gray-400">
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center">
-                            <a href="#">
-                                <img class="w-10 h-10 rounded-full"
-                                     src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/avatar-2-1583234102.jpg?resize=768:*"/>
-                            </a>
-                            <div class="ml-2">
-                                <a href="#" class="text-green-500 hover:underline">User</a>
-                                <div class="-mt-1 text-xs text-gray-400">March 28, 2021</div>
-                            </div>
-                        </div>
-                        <a href="#"
-                           class="px-2 py-1 text-sm flex items-center text-green-500 border border-green-500 rounded-sm hover:bg-green-500 group">
-                            <span class="iconify group-hover:text-white" data-icon="ion-heart"
-                                  data-inline="false"></span>
-                            <div class="ml-1 group-hover:text-white">0</div>
-                        </a>
-                    </div>
+                @forelse ($articles as $article)
+                    @include('_article')
+                @empty
+                    <p class="p-4">No articles yet.</p>
+                @endforelse
 
-                    <a href="#">
-                        <div class="mt-4 text-xl font-bold">
-                            New Article
-                        </div>
-
-                        <div class="text-sm text-gray-400">Content</div>
-                    </a>
-
-                    <a href="#">
-                        <div class="mt-4 text-xs text-gray-400">
-                            Read more...
-                        </div>
-                    </a>
-                </div>
-                <div class="py-8 border-b border-b-gray-400">
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center">
-                            <a href="#">
-                                <img class="w-10 h-10 rounded-full"
-                                     src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/avatar-2-1583234102.jpg?resize=768:*"/>
-                            </a>
-                            <div class="ml-2">
-                                <a href="#" class="text-green-500 hover:underline">User</a>
-                                <div class="-mt-1 text-xs text-gray-400">March 28, 2021</div>
-                            </div>
-                        </div>
-                        <a href="#"
-                           class="px-2 py-1 text-sm flex items-center text-green-500 border border-green-500 rounded-sm hover:bg-green-500 group">
-                            <span class="iconify group-hover:text-white" data-icon="ion-heart"
-                                  data-inline="false"></span>
-                            <div class="ml-1 group-hover:text-white">0</div>
-                        </a>
-                    </div>
-
-                    <a href="#">
-                        <div class="mt-4 text-xl font-bold">
-                            New Article
-                        </div>
-
-                        <div class="text-sm text-gray-400">Content</div>
-                    </a>
-
-                    <a href="#">
-                        <div class="mt-4 text-xs text-gray-400">
-                            Read more...
-                        </div>
-                    </a>
-                </div>
+                {{ $articles->links() }}
             </div>
             <div class="w-1/4">
                 <div class="ml-4 bg-gray-200 p-3">
