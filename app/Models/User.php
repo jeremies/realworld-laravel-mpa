@@ -48,4 +48,16 @@ class User extends Authenticatable
             ->orderByDesc('created_at')
             ->paginate(10);
     }
+
+    public function path($append = '')
+    {
+        $path = route('profile', $this->username);
+
+        return $append ? "{$path}/{$append}" : $path;
+    }
+
+    public function articles()
+    {
+        return $this->hasMany(Article::class)->latest();
+    }
 }

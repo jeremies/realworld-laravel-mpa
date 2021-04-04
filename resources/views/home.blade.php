@@ -21,13 +21,7 @@
                     </x-nav-link>
                 </div>
 
-                @forelse ($articles as $article)
-                    @include('_article')
-                @empty
-                    <p class="p-4">No articles yet.</p>
-                @endforelse
-
-                {{ $articles->links() }}
+                @include('_timeline')
             </div>
             <div class="w-1/4">
                 <div class="ml-4 bg-gray-200 p-3">

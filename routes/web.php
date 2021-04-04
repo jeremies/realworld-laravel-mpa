@@ -23,6 +23,10 @@ Route::get('/', function () {
 
 Route::get('/global', [\App\Http\Controllers\ArticleController::class, 'index'])->name('global');
 
+Route::get('/@{user:username}', [\App\Http\Controllers\ProfileController::class, 'show'])->name(
+    'profile'
+);
+
 Route::middleware('auth')->group(function () {
     Route::get('/feed', [\App\Http\Controllers\ArticleController::class, 'feed'])->name('feed');
 });

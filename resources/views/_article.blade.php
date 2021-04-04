@@ -6,7 +6,8 @@
                      src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/avatar-2-1583234102.jpg?resize=768:*"/>
             </a>
             <div class="ml-2">
-                <a href="#" class="text-green-500 hover:underline">{{ $article->user->username }}</a>
+                <a href="{{ $article->user->path() }}"
+                   class="text-green-500 hover:underline">{{ $article->user->username }}</a>
                 <div class="-mt-1 text-xs text-gray-400">{{ $article->created_at->format('j F, Y') }}</div>
             </div>
         </div>
