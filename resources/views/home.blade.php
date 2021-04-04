@@ -10,6 +10,17 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto px-20 flex">
             <div class="w-3/4">
+                <div class="space-x-8 -my-px ml-10 flex">
+                    @auth
+                        <x-nav-link :href="route('feed')" :active="request()->routeIs('feed')">
+                            Your Feed
+                        </x-nav-link>
+                    @endauth
+                    <x-nav-link :href="route('global')" :active="request()->routeIs('global')">
+                        Global Feed
+                    </x-nav-link>
+                </div>
+
                 @forelse ($articles as $article)
                     @include('_article')
                 @empty

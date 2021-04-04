@@ -8,7 +8,7 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, Followable;
 
     /**
      * The attributes that are mass assignable.
@@ -39,4 +39,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function feed()
+    {
+        $friends = $this->follows()->pluck('id');
+
+        return Article::whereIn('user_id', $friends)
+            ->orderByDesc('created_at')
+            ->paginate(10);
+    }
 }

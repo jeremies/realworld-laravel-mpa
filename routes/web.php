@@ -24,9 +24,7 @@ Route::get('/', function () {
 Route::get('/global', [\App\Http\Controllers\ArticleController::class, 'index'])->name('global');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/feed', function () {
-        return view('home');
-    })->name('feed');
+    Route::get('/feed', [\App\Http\Controllers\ArticleController::class, 'feed'])->name('feed');
 });
 
 require __DIR__ . '/auth.php';

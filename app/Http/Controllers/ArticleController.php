@@ -11,4 +11,10 @@ class ArticleController extends Controller
         $articles = Article::orderByDesc('created_at')->paginate(10);
         return view('home', compact('articles'));
     }
+
+    public function feed()
+    {
+        $articles = auth()->user()->feed();
+        return view('home', compact('articles'));
+    }
 }
