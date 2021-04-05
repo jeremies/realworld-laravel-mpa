@@ -29,6 +29,11 @@ Route::get('/@{user:username}', [\App\Http\Controllers\ProfileController::class,
 
 Route::middleware('auth')->group(function () {
     Route::get('/feed', [\App\Http\Controllers\ArticleController::class, 'feed'])->name('feed');
+
+    Route::post(
+        '/profiles/{user:username}/follow',
+        [\App\Http\Controllers\FollowController::class, 'store']
+    )->name('follow');
 });
 
 require __DIR__ . '/auth.php';

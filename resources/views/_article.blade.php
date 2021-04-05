@@ -13,8 +13,10 @@
         </div>
         <a href="#"
            class="px-2 py-1 text-sm flex items-center text-green-500 border border-green-500 rounded-sm hover:bg-green-500 group">
-                            <span class="iconify group-hover:text-white" data-icon="ion-heart"
-                                  data-inline="false"></span>
+            <svg class="w-3 fill-current group-hover:text-white" viewBox="0 0 24 24">
+                <path
+                    d="M12 4.248c-3.148-5.402-12-3.825-12 2.944 0 4.661 5.571 9.427 12 15.808 6.43-6.381 12-11.147 12-15.808 0-6.792-8.875-8.306-12-2.944z"/>
+            </svg>
             <div class="ml-1 group-hover:text-white">0</div>
         </a>
     </div>
