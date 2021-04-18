@@ -43,4 +43,5 @@ Route::middleware('auth')->group(function () {
     Route::delete('/articles/{article:slug}/like', [\App\Http\Controllers\ArticleLikesController::class, 'destroy']);
 });
 
+
 require __DIR__ . '/auth.php';
