@@ -31,9 +31,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/feed', [\App\Http\Controllers\ArticleController::class, 'feed'])->name('feed');
 
     Route::post(
-        '/profiles/{user:username}/follow',
+        '/@{user:username}/follow',
         [\App\Http\Controllers\FollowController::class, 'store']
     )->name('follow');
+
+    Route::get('/settings', [\App\Http\Controllers\ProfileController::class, 'edit'])->name('settings');
+
+    Route::patch('/settings', [\App\Http\Controllers\ProfileController::class, 'update']);
+
 });
 
 require __DIR__ . '/auth.php';
