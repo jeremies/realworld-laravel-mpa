@@ -39,6 +39,8 @@ Route::middleware('auth')->group(function () {
 
     Route::patch('/settings', [\App\Http\Controllers\ProfileController::class, 'update']);
 
+    Route::post('/articles/{article:slug}/like', [\App\Http\Controllers\ArticleLikesController::class, 'store']);
+    Route::delete('/articles/{article:slug}/like', [\App\Http\Controllers\ArticleLikesController::class, 'destroy']);
 });
 
 require __DIR__ . '/auth.php';

@@ -14,6 +14,7 @@ class ProfileController extends Controller
             'user' => $user,
             'articles' => $user
                 ->articles()
+                ->withLikes()
                 ->paginate(10),
         ]);
     }

@@ -1,7 +1,7 @@
 <x-app-layout>
     <div class="flex flex-col items-center justify-center py-10 bg-gray-200 space-y-2 px-24">
         <img class="w-28 h-28 rounded-full"
-             src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/avatar-2-1583234102.jpg?resize=768:*"/>
+             src="{{ $user->getImage() }}"/>
         <h1 class="text-2xl font-bold">{{ $user->username }}</h1>
         <p class="w-1/3 text-sm text-gray-500 text-center">{{ $user->bio }}</p>
         <div class="w-full flex items-center justify-end">

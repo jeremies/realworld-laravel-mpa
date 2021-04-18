@@ -42,6 +42,7 @@ class User extends Authenticatable
         $friends = $this->follows()->pluck('id');
 
         return Article::whereIn('user_id', $friends)
+            ->withLikes()
             ->orderByDesc('created_at')
             ->paginate(10);
     }
@@ -56,5 +57,15 @@ class User extends Authenticatable
     public function articles()
     {
         return $this->hasMany(Article::class)->latest();
+    }
+
+    public function getImage()
+    {
+        return $this->image ?? 'https://upload.wikimedia.org/wikipedia/commons/c/c5/Waze_Avatar.png';
+    }
+
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
     }
 }
