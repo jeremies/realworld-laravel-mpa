@@ -3,7 +3,7 @@
         <div class="flex items-center">
             <a href="#">
                 <img class="w-10 h-10 rounded-full"
-                     src="{{ $article->user->getImage() }}"/>
+                     src="{{ $article->user->image }}"/>
             </a>
             <div class="ml-2">
                 <a href="{{ $article->user->path() }}"

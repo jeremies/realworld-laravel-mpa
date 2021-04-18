@@ -59,9 +59,9 @@ class User extends Authenticatable
         return $this->hasMany(Article::class)->latest();
     }
 
-    public function getImage()
+    public function getImageAttribute($value)
     {
-        return $this->image ?? 'https://upload.wikimedia.org/wikipedia/commons/c/c5/Waze_Avatar.png';
+        return $value ?? 'https://upload.wikimedia.org/wikipedia/commons/c/c5/Waze_Avatar.png';
     }
 
     public function likes()
