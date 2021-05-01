@@ -17,4 +17,25 @@ class ArticleController extends Controller
         $articles = auth()->user()->feed();
         return view('home', compact('articles'));
     }
+
+    public function create()
+    {
+        return view('articles.create');
+    }
+
+    public function store()
+    {
+        $attributes = request()->validate([
+            'title' => 'required|max:200',
+            'description' => 'required|max:500',
+            'body' => 'required'
+        ]);
+
+        $attributes['user_id'] = auth()->id();
+
+        Article::create($attributes);
+
+        return redirect()->route('TODO');
+
+    }
 }

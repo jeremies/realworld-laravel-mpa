@@ -16,6 +16,9 @@
                         Home
                     </x-nav-link>
                     @auth
+                        <x-nav-link :href="route('articles.create')" :active="request()->routeIs('articles.create')">
+                            New Article
+                        </x-nav-link>
                         <x-nav-link :href="route('settings')" :active="request()->routeIs('settings')">
                             Settings
                         </x-nav-link>

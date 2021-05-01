@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\ArticleLikesController;
+use App\Http\Controllers\FollowController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,27 +25,30 @@ Route::get('/', function () {
     }
 })->name('home');
 
-Route::get('/global', [\App\Http\Controllers\ArticleController::class, 'index'])->name('global');
+Route::get('/global', [ArticleController::class, 'index'])->name('global');
 
-Route::get('/@{user:username}', [\App\Http\Controllers\ProfileController::class, 'show'])->name(
+Route::get('/@{user:username}', [ProfileController::class, 'show'])->name(
     'profile'
 );
 
 Route::middleware('auth')->group(function () {
-    Route::get('/feed', [\App\Http\Controllers\ArticleController::class, 'feed'])->name('feed');
+    Route::get('/feed', [ArticleController::class, 'feed'])->name('feed');
+    Route::get('/articles/create', [ArticleController::class, 'create'])->name('articles.create');
+    Route::post('/articles', [ArticleController::class, 'store'])->name('articles.store');
 
     Route::post(
         '/@{user:username}/follow',
-        [\App\Http\Controllers\FollowController::class, 'store']
+        [FollowController::class, 'store']
     )->name('follow');
 
-    Route::get('/settings', [\App\Http\Controllers\ProfileController::class, 'edit'])->name('settings');
+    Route::get('/settings', [ProfileController::class, 'edit'])->name('settings');
 
-    Route::patch('/settings', [\App\Http\Controllers\ProfileController::class, 'update']);
+    Route::patch('/settings', [ProfileController::class, 'update']);
 
-    Route::post('/articles/{article:slug}/like', [\App\Http\Controllers\ArticleLikesController::class, 'store']);
-    Route::delete('/articles/{article:slug}/like', [\App\Http\Controllers\ArticleLikesController::class, 'destroy']);
+    Route::post('/articles/{article:slug}/like', [ArticleLikesController::class, 'store']);
+    Route::delete('/articles/{article:slug}/like', [ArticleLikesController::class, 'destroy']);
+
+
 });
-
 
 require __DIR__ . '/auth.php';
