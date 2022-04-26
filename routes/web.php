@@ -47,8 +47,10 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/articles/{article:slug}/like', [ArticleLikesController::class, 'store']);
     Route::delete('/articles/{article:slug}/like', [ArticleLikesController::class, 'destroy']);
-
-
 });
+
+Route::get('/articles/{article:slug}', [ArticleController::class, 'show'])->name(
+    'articles.show'
+);
 
 require __DIR__ . '/auth.php';

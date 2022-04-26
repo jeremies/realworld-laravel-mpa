@@ -1,7 +1,7 @@
 <div class="py-8 border-b border-b-gray-400">
     <div class="flex items-center justify-between">
         <div class="flex items-center">
-            <a href="#">
+            <a href="{{ $article->user->path() }}">
                 <img class="w-10 h-10 rounded-full"
                      src="{{ $article->user->image }}"/>
             </a>

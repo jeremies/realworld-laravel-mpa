@@ -36,6 +36,10 @@ class ArticleController extends Controller
         Article::create($attributes);
 
         return redirect()->route('TODO');
+    }
 
+    public function show(Article $article)
+    {
+        return view('articles.show', compact('article'));
     }
 }
